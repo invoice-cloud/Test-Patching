@@ -2,6 +2,9 @@
 - name: Patch Windows VMs
   hosts: all
   gather_facts: no
+  vars:
+    ansible_shell_type: powershell
+    ansible_shell_executable: powershell.exe
   tasks:
     - name: Ensure the latest updates are installed
       ansible.windows.win_updates:
