@@ -1,0 +1,10 @@
+---
+- name: Patch Windows VMs
+  hosts: all
+  tasks:
+    - name: Ensure the latest updates are installed
+      ansible.windows.win_updates:
+        category_names:
+          - SecurityUpdates
+          - CriticalUpdates
+        reboot: yes
