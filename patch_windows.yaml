@@ -1,6 +1,7 @@
 ---
 - name: Patch Windows VMs
   hosts: all
+  gather_facts: no
   tasks:
     - name: Ensure the latest updates are installed
       ansible.windows.win_updates:
@@ -8,3 +9,8 @@
           - SecurityUpdates
           - CriticalUpdates
         reboot: yes
+      register: update_result
+
+    - name: Log update results
+      debug:
+        msg: "{{ update_result }}"
